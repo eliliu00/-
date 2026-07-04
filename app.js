@@ -272,17 +272,17 @@ const DATA = {
         {
             title: "餘音繞梁",
             bopo: "ㄩˊ ㄧㄣ ㄖㄠˋ ㄌㄧㄤˊ",
-            img: "file:///C:/Users/elisa/.gemini/antigravity/brain/07f1da14-79bf-4967-86ab-9c5588c3d78e/idiom1_yu_yin_rao_liang_1783107061555.jpg"
+            img: "file:///C:/Users-/elisa/Documents/GitHub/四下期末複習/brain/07f1da14-79bf-4967-86ab-9c5588c3d78e/idiom1_yu_yin_rao_liang_1783107061555.jpg"
         },
         {
             title: "呼風喚雨",
             bopo: "ㄏㄨ ㄈㄥ ㄏㄨㄢˋ ㄩˇ",
-            img: "file:///C:/Users/elisa/.gemini/antigravity/brain/07f1da14-79bf-4967-86ab-9c5588c3d78e/idiom2_hu_feng_huan_yu_1783107120737.jpg"
+            img: "file:///C:/Users-/elisa/Documents/GitHub/四下期末複習/brain/07f1da14-79bf-4967-86ab-9c5588c3d78e/idiom2_hu_feng_huan_yu_1783107120737.jpg"
         },
         {
             title: "捷足先登",
             bopo: "ㄐㄧㄝˊ ㄗㄨˊ ㄒㄧㄢ ㄉㄥ",
-            img: "file:///C:/Users/elisa/.gemini/antigravity/brain/07f1da14-79bf-4967-86ab-9c5588c3d78e/idiom3_jie_zu_xian_deng_1783107183824.jpg"
+            img: "file:///C:/Users-/elisa/Documents/GitHub/四下期末複習/brain/07f1da14-79bf-4967-86ab-9c5588c3d78e/idiom3_jie_zu_xian_deng_1783107183824.jpg"
         }
     ],
 
