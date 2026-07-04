@@ -1,0 +1,488 @@
+/* style.css - 國語複習簡報樣式表 */
+:root {
+    --primary: #5c7cfa;
+    --primary-light: #edf2ff;
+    --accent: #ff922b;
+    --success: #37b24d;
+    --danger: #f03e3e;
+    --text-color: #2b2b2b;
+    --text-muted: #868e96;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --font-cute: 'Fredoka', 'Noto Sans TC', sans-serif;
+    --font-normal: 'Noto Sans TC', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+
+body {
+    font-family: var(--font-normal);
+    color: var(--text-color);
+    background: #f1f3f5;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.audio-control {
+    position: fixed; top: 20px; right: 20px; z-index: 1000;
+    width: 50px; height: 50px;
+    background: var(--glass-bg); backdrop-filter: blur(8px);
+    border: 2px solid var(--glass-border); border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer; box-shadow: var(--shadow-md);
+    transition: transform 0.2s, background 0.2s;
+}
+.audio-control:hover { transform: scale(1.1); background: #fff; }
+.audio-control .icon { font-size: 20px; }
+
+.scene {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.1,0.8,0.2,1);
+    transform: translateY(20px);
+    padding: 40px 20px;
+}
+.scene.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* ---- 首頁 ---- */
+#home {
+    background: linear-gradient(180deg, #d0ebff 0%, #a5d8ff 60%, #e7f5ff 100%);
+    overflow: hidden;
+}
+.sky { position: absolute; top: 0; width: 100%; height: 50%; }
+.cloud { position: absolute; background: #fff; border-radius: 100px; opacity: 0.8; }
+.cloud::before, .cloud::after { content: ''; position: absolute; background: #fff; border-radius: 50%; }
+.cloud1 { width: 150px; height: 50px; top: 10%; left: 10%; animation: floatClouds 30s linear infinite alternate; }
+.cloud1::before { width: 70px; height: 70px; top: -30px; left: 15px; }
+.cloud1::after  { width: 50px; height: 50px; top: -20px; right: 20px; }
+.cloud2 { width: 200px; height: 60px; top: 25%; right: 15%; animation: floatClouds 45s linear infinite alternate-reverse; }
+.cloud2::before { width: 90px; height: 90px; top: -45px; left: 20px; }
+.cloud2::after  { width: 70px; height: 70px; top: -30px; right: 30px; }
+@keyframes floatClouds { 0% { transform: translateX(0); } 100% { transform: translateX(100px); } }
+
+.banner {
+    z-index: 10; text-align: center;
+    background: rgba(255,255,255,0.45); backdrop-filter: blur(16px);
+    border: 2px solid rgba(255,255,255,0.6); border-radius: 30px;
+    padding: 40px 60px; box-shadow: var(--shadow-lg); max-width: 90%;
+    animation: popIn 0.8s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.school-badge {
+    display: inline-block; background: var(--primary); color: #fff;
+    font-size: 14px; font-weight: bold; padding: 6px 16px;
+    border-radius: 20px; margin-bottom: 20px; letter-spacing: 2px;
+}
+.banner h1 { font-size: 56px; font-family: var(--font-cute); color: #1c7ed6; text-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 10px; }
+.banner h2 { font-size: 32px; font-weight: 800; color: var(--text-color); margin-bottom: 15px; letter-spacing: 4px; }
+.lessons { font-size: 18px; color: #495057; margin-bottom: 30px; font-weight: 500; }
+
+.btn {
+    font-family: var(--font-cute); font-size: 20px; font-weight: 700;
+    padding: 14px 40px; border: none; border-radius: 50px;
+    cursor: pointer; box-shadow: var(--shadow-md); transition: all 0.2s ease-in-out;
+}
+.btn-start { background: linear-gradient(135deg, #ff922b 0%, #f76707 100%); color: white; }
+.btn-start:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 15px 20px rgba(247,103,7,0.3); }
+.btn-start:active { transform: scale(0.98); }
+
+.mountains { position: absolute; bottom: -10px; width: 100%; height: 25%; pointer-events: none; }
+.mountain { position: absolute; bottom: 0; width: 120%; height: 100%; border-radius: 50% 50% 0 0; }
+.mountain-back { background: #74c0fc; left: -10%; height: 110%; opacity: 0.5; }
+.mountain-front { background: #4dabf7; right: -10%; height: 80%; opacity: 0.7; }
+@keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* ---- 主選單 (翻牌版) ---- */
+#lobby {
+    background: linear-gradient(135deg, #e3fafc 0%, #c5f6fa 100%);
+    overflow-y: auto;
+}
+.lobby-header { text-align: center; margin-bottom: 20px; animation: fadeInDown 0.6s ease-out; }
+.lobby-header h3 { font-size: 34px; font-weight: 900; color: #0b7285; }
+.lobby-header p { font-size: 15px; color: #495057; margin-top: 5px; }
+
+.lobby-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 每個卡片容器 */
+.lobby-card {
+    height: 165px;
+    cursor: pointer;
+    perspective: 800px;
+    animation: popCard 0.6s cubic-bezier(0.175,0.885,0.32,1.1) both;
+}
+.lobby-card:nth-child(1) { animation-delay: 0.03s; }
+.lobby-card:nth-child(2) { animation-delay: 0.06s; }
+.lobby-card:nth-child(3) { animation-delay: 0.09s; }
+.lobby-card:nth-child(4) { animation-delay: 0.12s; }
+.lobby-card:nth-child(5) { animation-delay: 0.15s; }
+.lobby-card:nth-child(6) { animation-delay: 0.18s; }
+.lobby-card:nth-child(7) { animation-delay: 0.21s; }
+.lobby-card:nth-child(8) { animation-delay: 0.24s; }
+.lobby-card:nth-child(9) { animation-delay: 0.27s; }
+.lobby-card:nth-child(10) { animation-delay: 0.30s; }
+.lobby-card:nth-child(11) { animation-delay: 0.33s; }
+
+.lobby-card-inner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+}
+.lobby-card.flipped .lobby-card-inner { transform: rotateY(180deg); }
+
+.lobby-card-front, .lobby-card-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 22px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 14px; box-shadow: var(--shadow-md);
+}
+.lobby-card-front {
+    background: var(--glass-bg); backdrop-filter: blur(12px);
+    border: 2px solid var(--glass-border);
+    transition: background 0.2s;
+}
+.lobby-card:hover .lobby-card-front { background: rgba(255,255,255,0.92); }
+.lobby-card-front .card-avatar { font-size: 54px; transition: transform 0.3s ease; }
+.lobby-card:hover .lobby-card-front .card-avatar { transform: scale(1.18) rotate(8deg); }
+.lobby-card-front .card-hint { font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: bold; }
+
+.lobby-card-back {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border: 3px solid #ffd43b;
+    transform: rotateY(180deg);
+    gap: 5px;
+}
+.lobby-card-back .card-title { font-size: 20px; font-weight: 900; color: #212529; }
+.lobby-card-back p { font-size: 12px; color: var(--text-muted); }
+.lobby-card-back .card-go {
+    font-family: var(--font-cute); font-size: 16px; font-weight: 700; color: white;
+    background: linear-gradient(135deg, #ff922b, #f76707);
+    padding: 6px 20px; border-radius: 20px; margin-top: 5px; transition: transform 0.2s;
+}
+.lobby-card-back .card-go:hover { transform: scale(1.1); }
+
+.btn-back-home { background: #e9ecef; color: #495057; font-size: 16px; padding: 10px 24px; }
+.btn-back-home:hover { background: #dee2e6; transform: translateY(-1px); }
+@keyframes popCard { 0% { opacity: 0; transform: translateY(40px) scale(0.9); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+
+/* ---- 複習單元共用 ---- */
+.activity {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    justify-content: space-between;
+}
+.nav-header {
+    width: 100%; max-width: 1000px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid #dee2e6; padding-bottom: 14px; margin-bottom: 18px;
+}
+.nav-header .title { font-size: 26px; font-weight: 900; color: #343a40; }
+.btn-nav {
+    font-family: var(--font-cute); font-weight: 700;
+    background: var(--primary); color: white;
+    padding: 8px 18px; border: none; border-radius: 12px;
+    cursor: pointer; box-shadow: var(--shadow-sm); transition: all 0.2s;
+}
+.btn-nav:hover { background: #4c6ef5; transform: translateY(-1px); }
+.slide-container {
+    flex-grow: 1; display: flex; justify-content: center; align-items: center;
+    width: 100%; max-width: 1000px;
+}
+.bottom-controls {
+    width: 100%; max-width: 600px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 18px;
+}
+.btn-arrow {
+    background: white; color: var(--text-color); font-size: 16px;
+    padding: 10px 22px; border: 2px solid #dee2e6;
+}
+.btn-arrow:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+.page-number { font-family: var(--font-cute); font-size: 18px; font-weight: bold; color: #495057; }
+.score-display, .timer-box {
+    font-family: var(--font-cute); font-size: 18px; font-weight: 700;
+    background: #fff; padding: 7px 14px; border-radius: 14px; box-shadow: var(--shadow-sm);
+}
+.timer-box { color: var(--accent); }
+
+/* ---- 1. 聽寫選字 ---- */
+.dict-box {
+    background: #fff; border-radius: 24px; padding: 36px;
+    width: 100%; max-width: 640px; text-align: center;
+    box-shadow: var(--shadow-md); border: 3px dashed #d0bfff;
+}
+.btn-speak {
+    font-family: var(--font-cute); background: linear-gradient(135deg, #ae3ec9 0%, #862e9c 100%);
+    color: white; border: none; padding: 18px 38px; font-size: 24px;
+    border-radius: 18px; cursor: pointer; margin-bottom: 22px;
+    box-shadow: 0 10px 15px rgba(134,46,156,0.2); transition: all 0.2s;
+}
+.btn-speak:hover { transform: scale(1.05); box-shadow: 0 12px 20px rgba(134,46,156,0.3); }
+.dict-hint { font-size: 17px; color: #495057; margin-bottom: 22px; }
+.options-container { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.option-btn {
+    font-family: var(--font-normal); background: #f8f9fa; border: 2px solid #dee2e6;
+    border-radius: 16px; padding: 22px; font-size: 30px; font-weight: bold;
+    cursor: pointer; transition: all 0.2s ease; box-shadow: var(--shadow-sm);
+}
+.option-btn:hover { background: #e9ecef; border-color: #ced4da; transform: translateY(-2px); }
+.option-btn.correct-choice { background: #ebfbee; border-color: var(--success); color: #2b8a3e; }
+.option-btn.wrong-choice { background: #fff5f5; border-color: var(--danger); color: #c92a2a; }
+.feedback-msg { font-size: 22px; font-weight: 800; margin-top: 14px; min-height: 33px; }
+.feedback-msg.correct { color: var(--success); }
+.feedback-msg.wrong { color: var(--danger); }
+
+/* ---- 2. 部首造詞 ---- */
+.radical-controls { position: absolute; top: 110px; z-index: 10; }
+.btn-timer-start { background: var(--accent); color: white; font-size: 15px; padding: 8px 18px; }
+.flashcard-container { width: 310px; height: 390px; perspective: 1000px; margin-top: 36px; }
+.flashcard {
+    width: 100%; height: 100%; position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.card-face {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 28px;
+    display: flex; flex-direction: column;
+    justify-content: space-between; align-items: center;
+    padding: 28px; box-shadow: var(--shadow-lg);
+}
+.card-front { background: linear-gradient(135deg, #fff9db 0%, #fff3bf 100%); border: 4px solid #fab005; }
+.character-display { font-size: 110px; font-weight: 900; color: #e67700; margin: auto; }
+.click-hint { font-size: 14px; color: #f76707; font-weight: bold; letter-spacing: 1px; }
+.card-back { background: white; border: 4px solid #20b2aa; transform: rotateY(180deg); }
+.info-group { width: 100%; margin-bottom: 18px; text-align: center; }
+.info-group h3 { font-size: 15px; color: #495057; border-bottom: 2px dashed #e9ecef; padding-bottom: 6px; margin-bottom: 10px; }
+.info-radical { font-size: 30px; font-weight: bold; color: #008080; }
+.info-words { font-size: 24px; font-weight: bold; color: #212529; }
+
+/* ---- 3. 改錯字 ---- */
+.question-card, .phrase-card, .sentence-card, .qa-card, .idiom-card, .vocab-card, .discrim-card {
+    background: #fff; border-radius: 26px; padding: 36px;
+    width: 100%; max-width: 750px; box-shadow: var(--shadow-md);
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 370px; justify-content: space-between;
+}
+.sentence-box { font-size: 26px; font-weight: bold; color: #343a40; line-height: 1.6; text-align: center; width: 100%; margin-bottom: 26px; }
+.wrong-char-hl { color: inherit; border-bottom: none; padding: 0 2px; }
+.clickable-char {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 3px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+.clickable-char:hover {
+    background-color: rgba(92, 124, 250, 0.15);
+    transform: scale(1.15);
+}
+.clickable-char.char-wrong-marked {
+    color: var(--danger) !important;
+    border-bottom: 3px wavy var(--danger) !important;
+    font-weight: 900;
+}
+.answer-box { display: flex; justify-content: center; gap: 32px; width: 100%; margin-bottom: 26px; animation: fadeInUp 0.4s ease-out; }
+.wrong-cross, .correct-check { font-size: 22px; font-weight: bold; padding: 10px 20px; border-radius: 14px; }
+.wrong-cross { background: #fff5f5; color: #c92a2a; border: 2px solid #ffc9c9; }
+.correct-check { background: #ebfbee; color: #2b8a3e; border: 2px solid #b2f2bb; }
+.bopomofo { font-family: var(--font-cute); color: #f76707; margin-left: 8px; font-size: 17px; }
+.btn-show-ans { background: linear-gradient(135deg, #15aabf 0%, #0b7285 100%); color: white; }
+.btn-show-ans:hover { transform: scale(1.03); box-shadow: 0 10px 15px rgba(11,114,133,0.2); }
+.hidden { opacity: 0; transform: scale(0.95); pointer-events: none; display: none !important; }
+
+/* ---- 4. 短語 ---- */
+.phrase-card { align-items: stretch; }
+.phrase-origin, .phrase-structure, .phrase-example { margin-bottom: 18px; }
+.phrase-card h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 5px; }
+.phrase-card .text { font-size: 24px; font-weight: bold; color: #212529; }
+.phrase-card .structure-text { font-size: 17px; color: var(--primary); background: var(--primary-light); display: inline-block; padding: 5px 12px; border-radius: 10px; font-weight: bold; }
+.phrase-card .example-text { font-size: 24px; font-weight: bold; color: var(--success); background: #ebfbee; padding: 10px 14px; border-radius: 12px; border-left: 5px solid var(--success); }
+
+/* ---- 5. 造句 ---- */
+.sentence-card { align-items: stretch; }
+.pattern-box { background: #fff9db; border: 2px solid #ffe066; padding: 14px; border-radius: 14px; margin-bottom: 20px; }
+.pattern-box h3, .examples-container h3 { font-size: 14px; color: #e67700; margin-bottom: 5px; }
+.examples-container h3 { color: var(--primary); }
+.pattern-text { font-size: 24px; font-weight: bold; color: #d9480f; }
+.example-list { list-style-type: none; }
+.example-list li { font-size: 19px; line-height: 1.6; color: #343a40; padding: 10px 8px; border-bottom: 1px solid #f1f3f5; display: flex; align-items: flex-start; }
+.example-list li::before { content: '⭐'; margin-right: 8px; font-size: 14px; margin-top: 4px; }
+
+/* ---- 6. 課文問答 ---- */
+.qa-card { justify-content: flex-start; }
+.qa-lesson { background: #e8f5e9; color: #2e7d32; font-size: 13px; font-weight: bold; padding: 4px 12px; border-radius: 18px; margin-bottom: 18px; }
+.qa-question { font-size: 24px; font-weight: 800; color: #1e293b; text-align: center; line-height: 1.5; margin-bottom: 26px; }
+.qa-answer { font-size: 21px; color: #3b82f6; background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 18px; padding: 20px; width: 100%; text-align: center; line-height: 1.6; font-weight: bold; margin-bottom: 26px; animation: fadeInUp 0.4s ease-out; }
+
+/* ---- 7. 語詞解釋 ---- */
+.vocab-card { align-items: stretch; max-width: 860px; min-height: 400px; }
+.vocab-bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; padding: 14px; background: #fff9db; border: 2px solid #ffe066; border-radius: 14px; }
+.vocab-bank-item { display: inline-flex; align-items: center; gap: 5px; background: white; border: 2px solid #fab005; padding: 7px 14px; border-radius: 12px; font-size: 17px; font-weight: bold; }
+.vocab-code { color: #e67700; font-family: var(--font-cute); font-size: 20px; }
+.vocab-word { color: #212529; }
+.vocab-question-box { background: #f8f9fa; border: 2px dashed #ced4da; border-radius: 14px; padding: 18px; margin-bottom: 18px; }
+.vocab-definition { font-size: 21px; font-weight: bold; color: #343a40; text-align: center; margin-bottom: 14px; line-height: 1.5; }
+.vocab-options { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.vocab-opt-btn {
+    font-family: var(--font-cute); font-size: 20px; font-weight: 700;
+    padding: 9px 22px; border: 2px solid #dee2e6; border-radius: 14px;
+    background: white; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);
+}
+.vocab-opt-btn:hover { background: #e9ecef; border-color: #adb5bd; transform: translateY(-2px); }
+.vocab-opt-btn.correct-choice { background: #ebfbee; border-color: var(--success); color: #2b8a3e; }
+.vocab-opt-btn.wrong-choice { background: #fff5f5; border-color: var(--danger); color: #c92a2a; }
+
+/* ---- 8. 生詞辨別 ---- */
+.discrim-card { max-width: 800px; min-height: 390px; }
+.discrim-sentence { font-size: 26px; font-weight: bold; color: #343a40; text-align: center; line-height: 1.7; margin-bottom: 28px; }
+.discrim-options { display: flex; gap: 22px; justify-content: center; margin-bottom: 18px; }
+.discrim-opt-btn {
+    font-family: var(--font-normal); font-size: 30px; font-weight: bold;
+    padding: 18px 38px; border: 3px solid #dee2e6; border-radius: 18px;
+    background: #f8f9fa; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm);
+}
+.discrim-opt-btn:hover { background: #e9ecef; border-color: #adb5bd; transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.discrim-opt-btn.correct-choice { background: #ebfbee; border-color: var(--success); color: #2b8a3e; }
+.discrim-opt-btn.wrong-choice { background: #fff5f5; border-color: var(--danger); color: #c92a2a; }
+
+/* ---- 9. 看圖猜成語 ---- */
+.idiom-card { min-height: 460px; }
+.idiom-img-container {
+    width: 100%; max-width: 400px; height: 240px;
+    background: #f1f3f5; border-radius: 18px; overflow: hidden;
+    box-shadow: var(--shadow-sm); margin-bottom: 18px;
+    display: flex; justify-content: center; align-items: center;
+}
+.idiom-img-container img { width: 100%; height: 100%; object-fit: cover; }
+.idiom-answer { text-align: center; margin-bottom: 18px; animation: scaleIn 0.3s ease-out; }
+.idiom-answer h2 { font-family: var(--font-cute); font-size: 36px; color: #e64980; letter-spacing: 2px; }
+
+/* ---- 10. 射氣球 ---- */
+#balloons {
+    background: linear-gradient(180deg, #74c0fc 0%, #a5d8ff 40%, #d0ebff 100%);
+    overflow: hidden; padding: 0;
+}
+#balloons .nav-header {
+    position: absolute; top: 0; left: 0; width: 100%; max-width: 100%;
+    padding: 16px 28px; z-index: 100;
+    background: rgba(255,255,255,0.3); backdrop-filter: blur(6px); border-bottom: none;
+}
+.balloon-arena { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.balloon {
+    position: absolute; cursor: crosshair;
+    display: flex; flex-direction: column; align-items: center;
+    animation: floatUp linear forwards;
+    z-index: 50;
+}
+.balloon:hover { filter: brightness(1.12); }
+.balloon-body {
+    width: 96px; height: 116px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.15);
+    position: relative;
+}
+.balloon-body::after {
+    content: ''; position: absolute;
+    top: 15%; left: 20%; width: 18px; height: 18px;
+    background: rgba(255,255,255,0.4); border-radius: 50%;
+}
+.balloon-word { font-size: 22px; font-weight: 900; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 2; }
+.balloon-string { width: 2px; height: 36px; background: #868e96; }
+.balloon.popped { animation: popBalloon 0.4s ease-out forwards !important; }
+
+.balloon-start-panel {
+    z-index: 60; text-align: center;
+    background: rgba(255,255,255,0.6); backdrop-filter: blur(12px);
+    border: 2px solid rgba(255,255,255,0.8); border-radius: 28px;
+    padding: 36px 56px; box-shadow: var(--shadow-lg);
+    display: flex; flex-direction: column; align-items: center;
+}
+.balloon-start-panel h2 { font-size: 34px; font-weight: 900; color: #1c7ed6; margin-bottom: 10px; }
+.balloon-start-panel p { font-size: 17px; color: #495057; margin-bottom: 18px; }
+.balloon-score-float {
+    position: absolute; top: 72px; right: 28px; z-index: 100;
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+    padding: 9px 18px; border-radius: 14px;
+    font-family: var(--font-cute); font-size: 20px; font-weight: 700; color: #e64980;
+    box-shadow: var(--shadow-sm);
+}
+
+@keyframes floatUp {
+    0%   { transform: translateY(110vh)                rotate(-3deg); opacity: 1; }
+    50%  { transform: translateY(calc(-50vh - 160px))  rotate(3deg);  opacity: 1; }
+    100% { transform: translateY(calc(-100vh - 300px)) rotate(-2deg); opacity: 1; }
+}
+@keyframes popBalloon {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(0); opacity: 0; }
+}
+.balloon-color-0 .balloon-body { background: linear-gradient(135deg, #ff6b6b, #f03e3e); }
+.balloon-color-1 .balloon-body { background: linear-gradient(135deg, #ffd43b, #fab005); }
+.balloon-color-2 .balloon-body { background: linear-gradient(135deg, #69db7c, #37b24d); }
+.balloon-color-3 .balloon-body { background: linear-gradient(135deg, #748ffc, #4c6ef5); }
+.balloon-color-4 .balloon-body { background: linear-gradient(135deg, #f783ac, #e64980); }
+.balloon-color-5 .balloon-body { background: linear-gradient(135deg, #63e6be, #20c997); }
+.balloon-color-6 .balloon-body { background: linear-gradient(135deg, #da77f2, #ae3ec9); }
+.balloon-color-7 .balloon-body { background: linear-gradient(135deg, #ffa94d, #f76707); }
+
+/* ---- 11. 幸運抽獎 ---- */
+.lottery-container { flex-grow: 1; width: 100%; max-width: 1100px; display: flex; justify-content: center; align-items: center; margin: 18px 0; }
+.lottery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; width: 100%; }
+.lottery-card {
+    height: 138px; background: linear-gradient(135deg, #ff6b6b 0%, #fa5252 100%);
+    border-radius: 18px; border: 3px solid #ffe3e3;
+    cursor: pointer; box-shadow: var(--shadow-md);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+    position: relative; transform-style: preserve-3d;
+}
+.lottery-card:hover { transform: scale(1.05) translateY(-5px); box-shadow: var(--shadow-lg); }
+.lottery-card.revealed { transform: rotateY(180deg); background: #fff; border-color: #ffd43b; cursor: default; }
+.lottery-card .front-content { font-size: 38px; font-weight: bold; color: #fff; backface-visibility: hidden; }
+.lottery-card .back-content {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transform: rotateY(180deg); backface-visibility: hidden;
+    padding: 10px; text-align: center; font-size: 15px; font-weight: bold; color: #212529;
+}
+
+/* ---- Modal ---- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+    z-index: 10000; display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-content {
+    background: white; border-radius: 28px; padding: 38px; text-align: center;
+    width: 90%; max-width: 440px; box-shadow: var(--shadow-lg);
+    border: 5px solid #ffcc00; transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position: relative;
+}
+.modal-overlay.active .modal-content { transform: scale(1); }
+.modal-close { position: absolute; top: 14px; right: 18px; font-size: 26px; cursor: pointer; color: var(--text-muted); }
+.modal-avatar { font-size: 68px; margin-bottom: 12px; animation: bounce 1.5s infinite; }
+.modal-title { font-size: 22px; color: #495057; margin-bottom: 8px; }
+.modal-prize { font-size: 30px; font-weight: 900; color: #ff922b; margin-bottom: 26px; line-height: 1.4; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+/* ---- Animations ---- */
+@keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四下期末考總複習 (第九～第十二課)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans+TC:wght@300..900&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="audio-control" id="muteBtn" title="切換音效">
+        <span class="icon">🔊</span>
+    </div>
+
+    <!-- 首頁 -->
+    <section class="scene active" id="home">
+        <div class="sky">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+        </div>
+        <div class="banner">
+            <div class="school-badge">阿根廷華興中文學校</div>
+            <h1>四下期末考總複習</h1>
+            <h2>總複習簡報</h2>
+            <p class="lessons">第九課《單車遊日月潭》～ 第十二課《閱讀課》</p>
+            <button class="btn btn-start" id="startBtn">開始複習 🚀</button>
+        </div>
+        <div class="mountains">
+            <div class="mountain mountain-back"></div>
+            <div class="mountain mountain-front"></div>
+        </div>
+    </section>
+
+    <!-- 主選單 (翻牌版) -->
+    <section class="scene" id="lobby">
+        <div class="lobby-header">
+            <h3>請選擇複習單元</h3>
+            <p>點選動物頭像翻牌，再點 GO 開始挑戰！</p>
+        </div>
+        <div class="lobby-grid">
+            <!-- 1 聽寫選字 -->
+            <div class="lobby-card" data-target="dictation">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐨</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">聽寫選字</div>
+                        <p>聽讀音選出正確國字</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 部首造詞 -->
+            <div class="lobby-card" data-target="radicals">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐶</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">部首造詞</div>
+                        <p>倒數計時生字翻牌</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3 改錯字 -->
+            <div class="lobby-card" data-target="errors">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐱</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">改錯字</div>
+                        <p>找出句子中的錯別字</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4 短語練習 -->
+            <div class="lobby-card" data-target="phrases">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🦆</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">短語練習</div>
+                        <p>照樣寫短語結構練習</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 5 造句展示 -->
+            <div class="lobby-card" data-target="sentences">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐊</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">造句展示</div>
+                        <p>精選句型與範例說明</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 6 課文問答 -->
+            <div class="lobby-card" data-target="qa">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐼</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">課文問答</div>
+                        <p>回答課文相關問題</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 7 語詞解釋 (新增) -->
+            <div class="lobby-card" data-target="vocabmatch">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐰</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">語詞解釋</div>
+                        <p>代號填寫配對語詞</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 8 生詞辨別 (新增) -->
+            <div class="lobby-card" data-target="discrim">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🦁</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">生詞辨別</div>
+                        <p>辨認易混淆的詞語</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 9 看圖猜成語 -->
+            <div class="lobby-card" data-target="idioms">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🦊</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">看圖猜成語</div>
+                        <p>觀察圖片聯想成語</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 10 射氣球 (新增) -->
+            <div class="lobby-card" data-target="balloons">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐸</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">射氣球</div>
+                        <p>點氣球念生字得分！</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 11 幸運抽獎 -->
+            <div class="lobby-card" data-target="lottery">
+                <div class="lobby-card-inner">
+                    <div class="lobby-card-front">
+                        <div class="card-avatar">🐻</div>
+                        <div class="card-hint">點我翻牌！</div>
+                    </div>
+                    <div class="lobby-card-back">
+                        <div class="card-title">幸運抽獎</div>
+                        <p>課堂互動歡樂翻牌</p>
+                        <div class="card-go">GO! →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-back-home">返回首頁 🏠</button>
+    </section>
+
+    <!-- 1. 聽寫選字 -->
+    <section class="scene activity" id="dictation">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐨 聽寫選字</span>
+            <div class="score-display">答對: <span id="dictScore">0</span> / <span id="dictTotal">0</span></div>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="dict-box">
+                    <button class="btn-speak" id="btnSpeak">🔊 播放聲音</button>
+                    <p class="dict-hint">請聽語音，並選出正確的語詞：</p>
+                    <div class="options-container">
+                        <button class="option-btn" data-correct="false" id="opt1"></button>
+                        <button class="option-btn" data-correct="true" id="opt2"></button>
+                    </div>
+                    <div class="feedback-msg" id="dictFeedback"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="dictPrev">上一題 👈</button>
+            <span class="page-number" id="dictPage">1/35</span>
+            <button class="btn btn-arrow" id="dictNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 2. 部首造詞 -->
+    <section class="scene activity" id="radicals">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐶 部首與造詞</span>
+            <div class="timer-box">⏱️ <span id="timerVal">60</span>s</div>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="radical-controls">
+                    <button class="btn btn-timer-start" id="startTimerBtn">⏱️ 開始計時 (60秒)</button>
+                    <button class="btn btn-timer-reset" id="resetTimerBtn" style="display:none;">重設</button>
+                </div>
+                <div class="flashcard-container">
+                    <div class="flashcard" id="radicalCard">
+                        <div class="card-face card-front">
+                            <span class="character-display" id="radChar">似</span>
+                            <span class="click-hint">點擊翻牌 🔄</span>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="info-group">
+                                <h3>部首</h3>
+                                <p class="info-radical" id="radName">人部</p>
+                            </div>
+                            <div class="info-group">
+                                <h3>筆畫</h3>
+                                <p class="info-radical" id="radStrokes" style="color: #ff922b; font-size: 26px;">9 畫</p>
+                            </div>
+                            <div class="info-group">
+                                <h3>造詞範例</h3>
+                                <p class="info-words" id="radWords">似乎、相似</p>
+                            </div>
+                            <span class="click-hint">點擊翻回 🔄</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="radPrev">上一個生字 👈</button>
+            <span class="page-number" id="radPage">1/36</span>
+            <button class="btn btn-arrow" id="radNext">下一個生字 👉</button>
+        </div>
+    </section>
+
+    <!-- 3. 改錯字 -->
+    <section class="scene activity" id="errors">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐱 改錯字大挑戰</span>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="question-card">
+                    <div class="sentence-box" id="errSentence"></div>
+                    <div class="answer-box hidden" id="errAnswerBox">
+                        <div class="wrong-cross">❌ 原錯字：<span id="errWrong"></span></div>
+                        <div class="correct-check">✅ 正確字：<span id="errRight"></span> <span class="bopomofo" id="errBopo"></span></div>
+                    </div>
+                    <button class="btn btn-show-ans" id="btnShowErrAns">顯示答案 👁️</button>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="errPrev">上一題 👈</button>
+            <span class="page-number" id="errPage">1/20</span>
+            <button class="btn btn-arrow" id="errNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 4. 短語練習 -->
+    <section class="scene activity" id="phrases">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🦆 短語練習</span>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="phrase-card">
+                    <div class="phrase-origin">
+                        <h3>課文原短語</h3>
+                        <p class="text" id="phraseOrig"></p>
+                    </div>
+                    <div class="phrase-structure">
+                        <h3>結構解析</h3>
+                        <p class="structure-text" id="phraseStruct"></p>
+                    </div>
+                    <div class="phrase-example hidden" id="phraseExample">
+                        <h3>照樣造句範例</h3>
+                        <p class="example-text" id="phraseExText"></p>
+                    </div>
+                    <button class="btn btn-show-ans" id="btnShowPhraseAns">顯示範例 👁️</button>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="phrasePrev">上一題 👈</button>
+            <span class="page-number" id="phrasePage">1/7</span>
+            <button class="btn btn-arrow" id="phraseNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 5. 造句展示 -->
+    <section class="scene activity" id="sentences">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐊 造句展示</span>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="sentence-card">
+                    <div class="pattern-box">
+                        <h3>句型</h3>
+                        <p class="pattern-text" id="sentPattern"></p>
+                    </div>
+                    <div class="examples-container">
+                        <h3>範文例句</h3>
+                        <ul class="example-list" id="sentExList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="sentPrev">上一題 👈</button>
+            <span class="page-number" id="sentPage">1/7</span>
+            <button class="btn btn-arrow" id="sentNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 6. 課文問答 -->
+    <section class="scene activity" id="qa">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐼 課文問答</span>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="qa-card">
+                    <div class="qa-lesson" id="qaLesson">第九課《單車遊日月潭》</div>
+                    <div class="qa-question" id="qaQuestion"></div>
+                    <div class="qa-answer hidden" id="qaAnswer"></div>
+                    <button class="btn btn-show-ans" id="btnShowQaAns">顯示答案 👁️</button>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="qaPrev">上一題 👈</button>
+            <span class="page-number" id="qaPage">1/8</span>
+            <button class="btn btn-arrow" id="qaNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 7. 語詞解釋 (代號填寫) -->
+    <section class="scene activity" id="vocabmatch">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐰 語詞解釋</span>
+            <div class="score-display" id="vocabScoreFloat" style="display:none;">答對: <span id="vocabScore">0</span> / <span id="vocabTotal">0</span></div>
+        </div>
+        <div class="slide-container">
+            <div class="slide active" style="width: 100%; display: flex; justify-content: center;">
+                <!-- 開始選擇面板 -->
+                <div class="vocab-card" id="vocabStartPanel" style="text-align: center; justify-content: center; gap: 20px;">
+                    <h2>🐰 語詞解釋 代號填寫</h2>
+                    <p>請選擇挑戰組別（每組題目不同）：</p>
+                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                        <button class="btn" style="background: linear-gradient(135deg, #4dabf7, #228be6); color: white;" id="startVocabBtnA">A 組挑戰 🔵<br><small>(第9、10課)</small></button>
+                        <button class="btn" style="background: linear-gradient(135deg, #ff8787, #fa5252); color: white;" id="startVocabBtnB">B 組挑戰 🔴<br><small>(第11、12課)</small></button>
+                    </div>
+                </div>
+                <!-- 題目卡片（預設隱藏） -->
+                <div class="vocab-card" id="vocabQuestionCard" style="display: none;">
+                    <div class="vocab-bank" id="vocabBank"></div>
+                    <div class="vocab-question-box">
+                        <div class="vocab-definition" id="vocabDef"></div>
+                        <div class="vocab-options" id="vocabOpts"></div>
+                    </div>
+                    <div class="feedback-msg" id="vocabFeedback"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls" id="vocabControls" style="display: none;">
+            <button class="btn btn-arrow" id="vocabPrev">上一題 👈</button>
+            <span class="page-number" id="vocabPage">1/12</span>
+            <button class="btn btn-arrow" id="vocabNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 8. 生詞辨別 -->
+    <section class="scene activity" id="discrim">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🦁 生詞辨別</span>
+            <div class="score-display">答對: <span id="discrimScore">0</span> / <span id="discrimTotal">0</span></div>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="discrim-card">
+                    <div class="discrim-sentence" id="discrimSentence"></div>
+                    <div class="discrim-options" id="discrimOpts"></div>
+                    <div class="feedback-msg" id="discrimFeedback"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="discrimPrev">上一題 👈</button>
+            <span class="page-number" id="discrimPage">1/12</span>
+            <button class="btn btn-arrow" id="discrimNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 9. 看圖猜成語 -->
+    <section class="scene activity" id="idioms">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🦊 看圖猜成語</span>
+        </div>
+        <div class="slide-container">
+            <div class="slide active">
+                <div class="idiom-card">
+                    <div class="idiom-img-container">
+                        <img id="idiomImg" src="" alt="成語插圖">
+                    </div>
+                    <div class="idiom-answer hidden" id="idiomAnswer">
+                        <h2 id="idiomAnswerTitle"></h2>
+                        <p class="bopomofo" id="idiomBopo"></p>
+                    </div>
+                    <button class="btn btn-show-ans" id="btnShowIdiomAns">顯示答案 👁️</button>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-controls">
+            <button class="btn btn-arrow" id="idiomPrev">上一題 👈</button>
+            <span class="page-number" id="idiomPage">1/3</span>
+            <button class="btn btn-arrow" id="idiomNext">下一題 👉</button>
+        </div>
+    </section>
+
+    <!-- 10. 射氣球 念生字 -->
+    <section class="scene activity" id="balloons">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐸 射氣球 念生字</span>
+        </div>
+        <div class="balloon-arena" id="balloonArena">
+            <div class="balloon-start-panel" id="balloonStartPanel">
+                <h2>🎈 射氣球！念生字！</h2>
+                <p>請選擇挑戰組別（每組題目不同）：</p>
+                <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                    <button class="btn" style="background: linear-gradient(135deg, #4dabf7, #228be6); color: white;" id="startBalloonBtnA">A 組挑戰 🔵</button>
+                    <button class="btn" style="background: linear-gradient(135deg, #ff8787, #fa5252); color: white;" id="startBalloonBtnB">B 組挑戰 🔴</button>
+                </div>
+            </div>
+        </div>
+        <div class="balloon-score-float" id="balloonScoreFloat" style="display:none;">
+            🎯 得分: <span id="balloonScore">0</span>
+        </div>
+    </section>
+
+    <!-- 11. 幸運抽獎 -->
+    <section class="scene activity" id="lottery">
+        <div class="nav-header">
+            <button class="btn-nav btn-lobby">主選單</button>
+            <span class="title">🐻 幸運抽獎卡片牆</span>
+            <button class="btn btn-timer-start" id="shuffleLotteryBtn">🔄 重新洗牌</button>
+        </div>
+        <div class="lottery-container">
+            <div class="lottery-grid" id="lotteryGrid"></div>
+        </div>
+    </section>
+
+    <!-- 彈出視窗 -->
+    <div class="modal-overlay" id="lotteryModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-avatar">🎁</div>
+            <h2 class="modal-title">抽獎結果</h2>
+            <div class="modal-prize" id="modalPrize">唱一首歌 +3分</div>
+            <button class="btn btn-start" id="modalConfirm">好耶！ 👍</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
