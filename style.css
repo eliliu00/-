@@ -482,7 +482,146 @@ body {
 .modal-prize { font-size: 30px; font-weight: 900; color: #ff922b; margin-bottom: 26px; line-height: 1.4; }
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 
-/* ---- Animations ---- */
 @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes scaleIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+
+/* ==========================================
+   📱 手機版響應式 (≤ 768px)
+   ========================================== */
+@media (max-width: 768px) {
+
+    /* 全域 */
+    .scene { padding: 16px 12px; overflow-y: auto; }
+    .audio-control { top: 12px; right: 12px; width: 40px; height: 40px; }
+    .audio-control .icon { font-size: 16px; }
+
+    /* ---- 首頁 ---- */
+    .banner { padding: 28px 24px; border-radius: 20px; }
+    .banner h1 { font-size: 36px; }
+    .banner h2 { font-size: 22px; letter-spacing: 2px; margin-bottom: 10px; }
+    .lessons { font-size: 14px; margin-bottom: 20px; }
+    .school-badge { font-size: 12px; padding: 5px 12px; margin-bottom: 14px; }
+    .btn { font-size: 16px; padding: 12px 28px; }
+
+    /* ---- 主選單 ---- */
+    #lobby { padding: 16px 12px; }
+    .lobby-header h3 { font-size: 24px; }
+    .lobby-header p { font-size: 13px; }
+    .lobby-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+    .lobby-card { height: 130px; }
+    .lobby-card-front .card-avatar { font-size: 38px; }
+    .lobby-card-front .card-hint { font-size: 11px; }
+    .lobby-card-back .card-title { font-size: 15px; }
+    .lobby-card-back p { font-size: 10px; }
+    .lobby-card-back .card-go { font-size: 13px; padding: 5px 14px; }
+    .btn-back-home { font-size: 13px; padding: 8px 16px; }
+
+    /* ---- 活動共用 ---- */
+    .nav-header { padding-bottom: 10px; margin-bottom: 12px; }
+    .nav-header .title { font-size: 17px; }
+    .btn-nav { font-size: 13px; padding: 6px 12px; }
+    .slide-container { padding: 0; }
+    .bottom-controls { margin-top: 12px; max-width: 100%; }
+    .btn-arrow { font-size: 13px; padding: 8px 14px; }
+    .page-number { font-size: 14px; }
+    .score-display, .timer-box { font-size: 14px; padding: 5px 10px; }
+
+    /* ---- 1. 聽寫選字 ---- */
+    .dict-box { padding: 20px 16px; border-radius: 18px; }
+    .btn-speak { font-size: 18px; padding: 14px 28px; margin-bottom: 16px; }
+    .dict-hint { font-size: 14px; margin-bottom: 16px; }
+    .option-btn { font-size: 22px; padding: 16px 12px; }
+    .feedback-msg { font-size: 18px; }
+
+    /* ---- 2. 部首造詞 ---- */
+    .flashcard-container { width: 240px; height: 300px; margin-top: 0; }
+    .character-display { font-size: 80px; }
+    .info-radical { font-size: 22px; }
+    .info-words { font-size: 18px; }
+    .radical-controls { top: 80px; }
+    .btn-timer-start { font-size: 13px; padding: 6px 14px; }
+
+    /* ---- 3. 改錯字 & 共用卡片 ---- */
+    .question-card, .phrase-card, .sentence-card, .qa-card,
+    .idiom-card, .vocab-card, .discrim-card {
+        padding: 18px 14px;
+        border-radius: 18px;
+        min-height: unset;
+    }
+    .sentence-box { font-size: 19px; margin-bottom: 16px; }
+    .answer-box { flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+    .wrong-cross, .correct-check { font-size: 16px; padding: 8px 14px; }
+    .btn-show-ans { font-size: 14px; padding: 10px 18px; }
+
+    /* ---- 4. 短語 ---- */
+    .phrase-card .text { font-size: 18px; }
+    .phrase-card .structure-text { font-size: 14px; }
+    .phrase-card .example-text { font-size: 17px; }
+
+    /* ---- 5. 造句 ---- */
+    .pattern-text { font-size: 19px; }
+    .example-list li { font-size: 15px; }
+
+    /* ---- 6. 問答 ---- */
+    .qa-question { font-size: 18px; margin-bottom: 16px; }
+    .qa-answer { font-size: 16px; padding: 14px; }
+
+    /* ---- 7. 語詞解釋 ---- */
+    .vocab-bank { gap: 7px; padding: 10px; margin-bottom: 12px; }
+    .vocab-bank-item { font-size: 14px; padding: 5px 10px; }
+    .vocab-code { font-size: 16px; }
+    .vocab-definition { font-size: 17px; margin-bottom: 10px; }
+    .vocab-opt-btn { font-size: 16px; padding: 8px 16px; }
+
+    /* ---- 8. 生詞辨別 ---- */
+    .discrim-sentence { font-size: 20px; margin-bottom: 18px; }
+    .discrim-options { flex-wrap: wrap; gap: 12px; }
+    .discrim-opt-btn { font-size: 22px; padding: 12px 24px; }
+
+    /* ---- 9. 看圖猜成語 ---- */
+    .idiom-img-container { height: 180px; }
+    .idiom-answer h2 { font-size: 28px; }
+
+    /* ---- 10. 射氣球 ---- */
+    #balloons .nav-header { padding: 10px 16px; }
+    .balloon-start-panel { padding: 24px 28px; border-radius: 20px; }
+    .balloon-start-panel h2 { font-size: 24px; }
+    .balloon-start-panel p { font-size: 14px; }
+    .balloon-body { width: 72px; height: 88px; }
+    .balloon-word { font-size: 16px; }
+    .balloon-score-float { top: 56px; right: 14px; font-size: 16px; padding: 6px 12px; }
+
+    /* ---- 11. 幸運抽獎 ---- */
+    .lottery-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .lottery-card { height: 100px; border-radius: 14px; }
+    .lottery-card .front-content { font-size: 28px; }
+    .lottery-card .back-content { font-size: 12px; }
+
+    /* ---- Modal ---- */
+    .modal-content { padding: 28px 20px; border-radius: 20px; }
+    .modal-avatar { font-size: 52px; }
+    .modal-title { font-size: 18px; }
+    .modal-prize { font-size: 22px; }
+}
+
+/* ==========================================
+   📱 超小螢幕 (≤ 400px)
+   ========================================== */
+@media (max-width: 400px) {
+    .banner h1 { font-size: 28px; }
+    .banner h2 { font-size: 18px; }
+    .lobby-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .lobby-card { height: 110px; }
+    .lobby-card-front .card-avatar { font-size: 30px; }
+    .nav-header .title { font-size: 15px; }
+    .sentence-box { font-size: 17px; }
+    .vocab-opt-btn { font-size: 14px; padding: 7px 12px; }
+    .discrim-opt-btn { font-size: 18px; padding: 10px 18px; }
+    .lottery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
